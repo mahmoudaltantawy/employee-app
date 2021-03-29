@@ -1,0 +1,20 @@
+<aside>
+    <ul class="list-group">
+        <li class="list-group-item" [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <i class="pi pi-home mx-2"></i>
+          {{'dashboard' | translate}}
+        </li>
+        <li class="list-group-item" [routerLink]="['/employees/add-employee']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <i class="pi pi-plus mx-2"></i>
+         {{'add_emp' | translate}}
+        </li>
+        <li class="list-group-item" [routerLink]="['/employees/employees-list']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <i class="pi pi-list mx-2"></i>
+          {{'employees' | translate}}
+        </li>
+       
+      </ul>
+</aside>

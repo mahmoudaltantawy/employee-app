@@ -1,0 +1,25 @@
+
+{
+    "add_emp":"Add Employee" ,
+    "dashboard":"Dashboard" ,
+    "employees":"Employees",
+    "home":"Home",
+    "welcome":"Welcome To Employee",
+    "emp_name":"Employee Name",
+    "emp_code":"Employee Code",
+    "birthday":"Birthday",
+    "department":"Department",
+    "gender":"Gender",
+    "male":"Male",
+    "female":"Female",
+    "cancel":"Cancel",
+    "name_required":"Employee Name Is Required",
+    "name_pattern":"Employee Name Is Not Valid",
+    "code_required":"Employee Code Is Required",
+    "code_pattern":"Employee Code Is Not Valid",
+    "birthday_required":"Employee Birthday Is Required",
+    "department_required":"Employee Department  Is Required",
+    "gender_required":"Employee Gender  Is Required" , 
+    "search":"Search",
+    "no_data":"NO Employees Found"
+}

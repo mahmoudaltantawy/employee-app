@@ -1,0 +1,60 @@
+<div class="container">
+
+    <h4 class="text-center my-4">{{'add_emp' | translate}}</h4>
+    <form [formGroup]="addEmpForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+     
+            <div class="form-group col-md-4 col-sm-6 col-12">
+                <label>{{'emp_name' | translate}}</label>
+                <input type="text" formControlName="empName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empName.errors }"  />
+                <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+                    <div *ngIf="f.empName.errors.required"> {{'name_required' | translate}}</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-sm-6 col-12">
+                <label>{{'emp_code' | translate}}</label>
+                <input type="text" formControlName="empCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empCode.errors }"  appPositiveNumbers/>
+                <div *ngIf="submitted && f.empCode.errors" class="invalid-feedback">
+                    <div *ngIf="f.empCode.errors.required">{{'code_required' | translate}}</div>
+                    <div *ngIf="f.empCode.errors.pattern">{{'code_pattern' | translate}}</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-sm-6 col-12">
+                <label>{{'birthday' | translate}}</label>
+                <p-calendar formControlName="date"
+                 [ngClass]="{ 'is-invalid': submitted && f.date.errors }" styleClass="w-100" showIcon="true" [readonlyInput]="true"></p-calendar>
+                <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                    <div *ngIf="f.date.errors.required">{{'birthday_required' | translate}}</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-sm-6 col-12">
+                <label class="d-block">{{'department' | translate}}</label>
+                <p-dropdown [options]="departments" optionLabel="name" formControlName="selectedDepartment" [showClear]="f.selectedDepartment.value" placeholder="Select Department" styleClass="w-100"></p-dropdown>
+                <div *ngIf="submitted && !f.selectedDepartment.value" class="invalid-feedback d-flex">
+                    <div *ngIf="f.selectedDepartment.errors.required">{{'department_required' | translate}}</div>
+                </div>
+                
+            </div>
+            <div class="form-group col-md-4 col-sm-6 col-12 ">
+                <label class="d-block">{{'gender' | translate}}</label>
+                <div class="d-flex">
+                    <div *ngFor="let gender of genderArr" class="p-field-checkbox d-flex mx-2 align-items-center"> 
+                            <p-radioButton [inputId]="gender.key"  [value]="gender" formControlName="selectedgender"></p-radioButton>
+                            <label [for]="gender.key" class="m-2">{{gender.gender}}</label>                    
+                    </div>
+                </div>
+                <div *ngIf="submitted && !f.selectedgender.value" class="invalid-feedback d-flex">
+                    <div *ngIf="f.selectedgender.errors.required">{{'gender_required' | translate}}</div>
+                </div>
+            </div>
+    
+       
+        </div>
+        
+       
+        <div class="text-center">
+            <button class="btn btn-primary mx-2">{{'add_emp' | translate}}</button>
+            <button class="btn btn-secondary mx-2" type="reset" (click)="onReset()">{{'cancel' | translate}}</button>
+        </div>
+    </form>
+</div>

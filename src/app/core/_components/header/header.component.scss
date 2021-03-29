@@ -1,0 +1,77 @@
+.navbar-light {
+  .navbar-brand {
+    .logo {
+      i {
+        font-size: 2.5em;
+        color: #3c4b64;
+      }
+      .logo_name {
+        font-size: 1rem;
+      }
+    }
+  }
+  .bars {
+    cursor: pointer;
+  }
+  .navbar-nav .nav-link {
+    font-size: 16px;
+    color: #333;
+    font-family: "Montserrat", sans-serif;
+    margin-inline-start: 10px;
+    cursor: pointer;
+  }
+}
+.navbar-light .navbar-nav {
+  .nav-link {
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      bottom: 2px;
+      left: 30%;
+      content: "";
+      background-color: #c9e8fc;
+      height: 3px;
+      width: 40%;
+      visibility: hidden;
+      transition: all ease-in-out 0.05s;
+    }
+    &:hover {
+      cursor: pointer;
+      &::after {
+        visibility: visible;
+        @media only screen and (max-width: 768px) {
+          visibility: hidden;
+        }
+      }
+    }
+    &.changelang {
+      padding: 3px 10px;
+      border: 2px solid #c9e8fc;
+      border-radius: 3px;
+      cursor: pointer;
+      @media only screen and (max-width: 768px) {
+        border: none;
+      }
+    }
+  }
+  .active {
+    color: #005b97;
+    .nav-link {
+      cursor: pointer;
+      &::after {
+        visibility: visible;
+        @media only screen and (max-width: 768px) {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+.nav-link {
+  cursor: pointer !important;
+}
+.dropdown-menu {
+  display: block !important;
+}

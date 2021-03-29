@@ -1,0 +1,78 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light  justify-content-between"
+>
+  <div class="container-fluid">
+    
+    <a class="navbar-brand d-flex align-items-center justify-content-between" style="width: 200px">
+      <p class="logo d-flex align-items-center justify-content-between">
+
+        <i class="pi pi-slack"></i> 
+       <span class="logo_name mx-2">EMPLOYEES</span> 
+      </p>
+      <span class="bars" (click)="toggleSideNav()">
+        <i class="pi pi-bars"></i>
+      </span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" ></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarNavDropdown"
+     
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active" >
+            {{'home' | translate}}
+            <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">{{today | date}}</a>
+        </li>
+      </ul>
+      <div class="nav-item" >
+        <div class="d-flex">
+          <div class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              (click)="showMenu = !showMenu"
+            >
+              Mahmoud El-Tantawy
+              <span></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="showMenu">
+              <a class="dropdown-item" >Log Out</a>
+              <a class="dropdown-item" >Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" >Something else here</a>
+            </div>
+          </div>
+          <a class="nav-link changelang" *ngIf="!defaultDir" (click)="loadLanguage()">
+            العربيه
+            <i class="pi pi-globe "></i>
+            </a>
+          <a class="nav-link changelang" *ngIf="defaultDir" (click)="loadLanguage()">
+            English
+            <i class="pi pi-globe"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

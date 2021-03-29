@@ -1,0 +1,90 @@
+<div class="p-5">
+
+  <div class="container">
+    <form [formGroup]="searchEmpForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-md-4 col-sm-6 col-12">
+          <label>{{ "emp_name" | translate }}</label>
+          <input
+            type="text"
+            formControlName="empName"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.empName.errors }"
+          />
+          <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+            <div *ngIf="f.empName.errors.required">
+              {{ "name_required" | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-4 col-sm-6 col-12">
+          <label class="d-block">{{ "department" | translate }}</label>
+          <p-dropdown
+            [options]="departments"
+            optionLabel="name"
+            formControlName="selectedDepartment"
+            [showClear]="f.selectedDepartment.value"
+            placeholder="Select Department"
+            styleClass="w-100"
+          ></p-dropdown>
+          <div
+            *ngIf="submitted && !f.selectedDepartment.value"
+            class="invalid-feedback d-flex"
+          >
+            <div *ngIf="f.selectedDepartment.errors.required">
+              {{ "birthday_required" | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-12">
+          <div class="text-center">
+            <button class="btn btn-primary mx-2">
+              {{ "search" | translate }}
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              {{ "cancel" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <h3 class="text-center mb-2">{{ "employees" | translate }}</h3>
+    <div *ngIf="employeesArr">
+      <p-table [value]="employeesArr" [paginator]="true" [rows]="7">
+        <ng-template pTemplate="header">
+          <tr>
+            <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+            <th>{{ "emp_name" | translate }}</th>
+            <th>{{ "emp_code" | translate }}</th>
+            <th>{{ "department" | translate }}</th>
+            <th>{{ "birthday" | translate }}</th>
+            <th>{{ "gender" | translate }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-item>
+          <tr>
+            <td><p-tableCheckbox [value]="rowData"></p-tableCheckbox></td>
+            <td>
+              {{ item.name }}
+            </td>
+            <td>{{ item.code }}</td>
+            <td>{{ item.department }}</td>
+            <td>{{ item.birthday }}</td>
+            <td>{{ item.gender }}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+          {{ "no_data" | translate }}
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="alert alert-danger" *ngIf="!employeesArr">
+      <button class="btn btn-success" routerLink="/employees/add-employee">
+        <i class="pi pi-angle-double-left mx-2"></i>
+  
+        {{ "add_emp" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
